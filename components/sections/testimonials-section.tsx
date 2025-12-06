@@ -25,26 +25,32 @@ export default function TestimonialsSection() {
 
         {/* Testimonials Grid */}
         <div className="grid md:grid-cols-3 gap-8">
-          {testimonials.map((testimonial, index) => (
-            <Card 
-              key={index}
-              className="border-border hover:border-secondary/50 transition-all animate-fade-in-up hover:shadow-lg hover:shadow-secondary/10 bg-card/50 backdrop-blur group"
-              style={{ animationDelay: `${index * 0.1}s` }}
-            >
-              <CardContent className="pt-6 space-y-4">
-                <div className="flex gap-1">
-                  {[...Array(testimonial.stars)].map((_, i) => (
-                    <Star key={i} className="w-4 h-4 fill-secondary text-secondary" />
-                  ))}
-                </div>
-                <p className="text-muted-foreground italic">"{testimonial.text}"</p>
-                <div className="pt-2 border-t border-border">
-                  <p className="font-semibold text-foreground group-hover:text-secondary transition-colors">{testimonial.name}</p>
-                  <p className="text-sm text-secondary">{testimonial.role}</p>
-                </div>
-              </CardContent>
-            </Card>
-          ))}
+          {testimonials.map((testimonial, index) => {
+            const isHighlighted = index === 1 // Center testimonial
+            return (
+              <Card 
+                key={index}
+                className={`border-border hover:border-secondary/30 transition-all animate-fade-in-up hover:shadow-md hover:shadow-secondary/5 bg-card/50 backdrop-blur group ${
+                  isHighlighted ? 'bg-card/70 border-secondary/20' : ''
+                }`}
+                style={{ animationDelay: `${index * 0.1}s` }}
+              >
+                <CardContent className="pt-6 space-y-4">
+                  <div className="flex gap-1">
+                    {[...Array(testimonial.stars)].map((_, i) => (
+                      <Star key={i} className="w-4 h-4 fill-secondary text-secondary" />
+                    ))}
+                  </div>
+                  <p className="text-muted-foreground/90 italic leading-relaxed">"{testimonial.text}"</p>
+                  <div className="pt-2 border-t border-border/50">
+                    <p className="font-semibold text-foreground/90 group-hover:text-secondary/80 transition-colors">{testimonial.name}</p>
+                    <p className="text-sm text-secondary/80">{testimonial.role}</p>
+                    <p className="text-xs text-muted-foreground/60 mt-0.5">Local business</p>
+                  </div>
+                </CardContent>
+              </Card>
+            )
+          })}
         </div>
       </div>
     </section>

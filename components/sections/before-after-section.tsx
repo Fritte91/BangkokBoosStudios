@@ -24,7 +24,7 @@ export default function BeforeAfterSection() {
     <section className="py-20 bg-background">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
-        <div className="text-center mb-16 animate-fade-in-up">
+        <div className="text-center mb-16">
           <h2 className="font-serif text-4xl md:text-5xl font-bold text-foreground mb-4">
             {t.beforeAfter.title}
           </h2>
@@ -34,26 +34,34 @@ export default function BeforeAfterSection() {
         </div>
 
         {/* Before/After Carousel */}
-        <div className="max-w-3xl mx-auto animate-fade-in" style={{ animationDelay: '0.2s' }}>
+        <div className="max-w-3xl mx-auto">
           <div className="grid md:grid-cols-2 gap-8 mb-8">
             {/* Before */}
-            <div className="bg-muted/50 rounded-lg border-2 border-border p-8 text-center">
-              <p className="text-sm font-semibold text-muted-foreground mb-2 uppercase">{t.beforeAfter.beforeLabel}</p>
-              <h3 className="font-serif text-xl font-bold text-foreground mb-4">{example.title}</h3>
-              <p className="text-muted-foreground text-sm">{example.before}</p>
-              <div className="mt-6 h-40 bg-background rounded border border-border flex items-center justify-center">
-                <p className="text-xs text-muted-foreground">{t.beforeAfter.beforePlaceholder}</p>
+            <div className="bg-muted/20 rounded-lg border border-border/50 p-6 text-center">
+              <p className="text-xs font-medium text-muted-foreground mb-2 uppercase tracking-wider">{t.beforeAfter.beforeLabel}</p>
+              <h3 className="font-serif text-lg font-semibold text-foreground mb-3">{example.title}</h3>
+              <p className="text-muted-foreground text-sm leading-relaxed">{example.before}</p>
+              <div className="mt-5 h-48 bg-background rounded border border-border/50 overflow-hidden">
               </div>
             </div>
 
             {/* After */}
-            <div className="bg-secondary/5 rounded-lg border-2 border-secondary/30 p-8 text-center">
-              <p className="text-sm font-semibold text-secondary mb-2 uppercase">{t.beforeAfter.afterLabel}</p>
+            <div className="bg-secondary/6 rounded-lg border-2 border-secondary/50 p-8 text-center">
+              <p className="text-xs font-semibold text-secondary mb-2 uppercase tracking-wider">{t.beforeAfter.afterLabel}</p>
               <h3 className="font-serif text-xl font-bold text-foreground mb-4">{example.title}</h3>
-              <p className="text-secondary font-semibold text-sm">{example.after}</p>
-              <div className="mt-6 h-40 bg-secondary/10 rounded border border-secondary/30 flex items-center justify-center">
-                <p className="text-xs text-secondary">{t.beforeAfter.afterPlaceholder}</p>
+              <p className="text-secondary/90 font-medium text-sm leading-relaxed">{example.after}</p>
+              <div className="mt-6 h-48 bg-background rounded border border-secondary/30 overflow-hidden">
               </div>
+              {example.projectUrl && (
+                <a
+                  href={example.projectUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="mt-6 inline-block text-xs text-muted-foreground/80 hover:text-foreground/70 transition-colors"
+                >
+                  View full project →
+                </a>
+              )}
             </div>
           </div>
 
@@ -63,19 +71,22 @@ export default function BeforeAfterSection() {
               variant="outline" 
               size="icon"
               onClick={prev}
-              className="rounded-full border-secondary/50 hover:border-secondary hover:text-secondary"
+              className="rounded-full border-secondary/50 hover:border-secondary hover:text-secondary transition-colors"
             >
               <ChevronLeft size={20} />
             </Button>
 
-            <div className="flex gap-2">
+            <div className="flex gap-2.5 items-center">
               {examples.map((_, index) => (
                 <button
                   key={index}
                   onClick={() => setCurrentIndex(index)}
-                  className={`w-2 h-2 rounded-full transition-all ${
-                    index === currentIndex ? 'bg-secondary w-8' : 'bg-border'
+                  className={`h-1.5 rounded-full transition-all duration-200 ${
+                    index === currentIndex 
+                      ? 'bg-secondary w-10' 
+                      : 'bg-border/60 w-1.5'
                   }`}
+                  aria-label={`Go to example ${index + 1}`}
                 />
               ))}
             </div>
@@ -84,7 +95,7 @@ export default function BeforeAfterSection() {
               variant="outline" 
               size="icon"
               onClick={next}
-              className="rounded-full border-secondary/50 hover:border-secondary hover:text-secondary"
+              className="rounded-full border-secondary/50 hover:border-secondary hover:text-secondary transition-colors"
             >
               <ChevronRight size={20} />
             </Button>

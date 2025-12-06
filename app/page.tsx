@@ -8,6 +8,7 @@ import ServicesSection from '@/components/sections/services-section'
 import WorkflowSection from '@/components/sections/workflow-section'
 import BeforeAfterSection from '@/components/sections/before-after-section'
 import PricingSection from '@/components/sections/pricing-section'
+import PostPricingCtaSection from '@/components/sections/post-pricing-cta-section'
 import TestimonialsSection from '@/components/sections/testimonials-section'
 import HowItWorksSection from '@/components/sections/how-it-works-section'
 import FAQSection from '@/components/sections/faq-section'
@@ -117,6 +118,7 @@ export default function Home() {
         <WorkflowSection />
         <BeforeAfterSection />
         <PricingSection />
+        <PostPricingCtaSection />
         <TestimonialsSection />
         <HowItWorksSection />
         <FAQSection />

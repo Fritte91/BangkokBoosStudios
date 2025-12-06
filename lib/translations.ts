@@ -21,6 +21,7 @@ type Plan = {
   name: string
   price: string
   description: string
+  whoThisIsFor: string
   features: string[]
   highlighted?: boolean
 }
@@ -29,6 +30,7 @@ type BeforeAfterExample = {
   title: string
   before: string
   after: string
+  projectUrl?: string
 }
 
 type WorkflowStep = {
@@ -112,6 +114,14 @@ type Translation = {
     choose: (planName: string) => string
     plans: Plan[]
   }
+  postPricingCta: {
+    eyebrow: string
+    headline: string
+    supportingText: string
+    primaryCta: string
+    secondaryLink: string
+    trustReassurance: string
+  }
   testimonials: {
     title: string
     subtitle: string
@@ -126,25 +136,43 @@ type Translation = {
     title: string
     subtitle: string
     items: FAQ[]
+    ctaQuestion: string
+    ctaButton: string
+    trustLine: string
   }
-  contact: {
-    title: string
-    subtitle: string
-    cardTitle: string
-    nameLabel: string
-    namePlaceholder: string
-    phoneLabel: string
-    phonePlaceholder: string
-    businessTypeLabel: string
-    businessOptions: {
-      value: string
-      label: string
-    }[]
-    challengeLabel: string
-    challengePlaceholder: string
-    submit: string
-    footnote: string
-  }
+    contact: {
+      title: string
+      subtitle: string
+      cardTitle: string
+      cardSubtitle: string
+      nameLabel: string
+      namePlaceholder: string
+      phoneLabel: string
+      phonePlaceholder: string
+      businessTypeLabel: string
+      businessOptions: {
+        value: string
+        label: string
+      }[]
+      challengeLabel: string
+      challengePlaceholder: string
+      preferredContactLabel: string
+      preferredContactOptions: {
+        value: string
+        label: string
+      }[]
+      submit: string
+      submitLoading: string
+      trustMicrocopy: string
+      successTitle: string
+      successMessage: string
+      errorMessage: string
+      validationErrors: {
+        nameRequired: string
+        phoneRequired: string
+        businessTypeRequired: string
+      }
+    }
   footer: {
     tagline: string
     servicesTitle: string
@@ -308,6 +336,7 @@ export const translations: Record<Locale, Translation> = {
           name: 'Starter',
           price: '3,500',
           description: 'Perfect for getting started',
+          whoThisIsFor: 'New businesses establishing their online presence',
           features: [
             'Google Business Profile optimization',
             '4 social media posts per week',
@@ -319,6 +348,7 @@ export const translations: Record<Locale, Translation> = {
           name: 'Growth',
           price: '6,500',
           description: 'Most popular for growing businesses',
+          whoThisIsFor: 'Established businesses ready to scale',
           features: [
             'Everything in Starter',
             'Daily social media posts',
@@ -333,6 +363,7 @@ export const translations: Record<Locale, Translation> = {
           name: 'Royal Boost',
           price: '12,000',
           description: 'Complete digital transformation',
+          whoThisIsFor: 'Businesses seeking comprehensive digital excellence',
           features: [
             'Everything in Growth',
             'Website updates & maintenance',
@@ -344,6 +375,14 @@ export const translations: Record<Locale, Translation> = {
           ],
         },
       ],
+    },
+    postPricingCta: {
+      eyebrow: 'Need help deciding?',
+      headline: 'Not sure which plan fits your business?',
+      supportingText: 'Get a free, no-obligation audit of your online presence. We\'ll tell you exactly what you need — and what you don\'t.',
+      primaryCta: 'Get Free Audit',
+      secondaryLink: 'Or contact us directly',
+      trustReassurance: 'No sales pressure. Honest advice.',
     },
     testimonials: {
       title: 'What Clients Say',
@@ -375,7 +414,7 @@ export const translations: Record<Locale, Translation> = {
       steps: [
         {
           title: 'Free Consultation',
-          description: 'We meet on LINE to understand your business and challenges.',
+          description: 'A quick, friendly chat on LINE. No pressure—just tell us about your business.',
         },
         {
           title: 'Setup & Creation',
@@ -387,7 +426,7 @@ export const translations: Record<Locale, Translation> = {
         },
         {
           title: 'Monthly Support',
-          description: 'Ongoing updates, maintenance, and support based on your package.',
+          description: 'We stay with you. Ongoing updates, maintenance, and support—you\'re never alone.',
         },
       ],
     },
@@ -420,11 +459,15 @@ export const translations: Record<Locale, Translation> = {
           answer: 'We provide support based on your package. Starter plan gets email support, while Growth & Royal Boost get priority support.',
         },
       ],
+      ctaQuestion: 'Still have questions?',
+      ctaButton: 'Get Free Audit',
+      trustLine: 'No pressure. Honest advice for Thai businesses.',
     },
     contact: {
       title: 'Ready to Get Started?',
       subtitle: 'Book your free consultation today.',
       cardTitle: 'Get Your Free Audit',
+      cardSubtitle: "Tell us about your business and we'll provide a personalized assessment.",
       nameLabel: 'Name',
       namePlaceholder: 'Your name',
       phoneLabel: 'Phone',
@@ -439,8 +482,23 @@ export const translations: Record<Locale, Translation> = {
       ],
       challengeLabel: 'What are your main challenges?',
       challengePlaceholder: 'Tell us about your business and what you need help with...',
-      submit: 'Schedule Free Consultation',
-      footnote: "We'll reach out to you on LINE or phone within 24 hours.",
+      preferredContactLabel: 'Preferred Contact Method',
+      preferredContactOptions: [
+        { value: '', label: 'No preference' },
+        { value: 'line', label: 'LINE' },
+        { value: 'phone', label: 'Phone' },
+      ],
+      submit: 'Get My Free Audit',
+      submitLoading: 'Submitting...',
+      trustMicrocopy: 'No pressure. No spam. We support both Thai and English.',
+      successTitle: 'Thank you!',
+      successMessage: "Your free audit request has been received. We'll contact you within 24 hours.",
+      errorMessage: 'Something went wrong. Please try again or contact us directly.',
+      validationErrors: {
+        nameRequired: 'Name is required',
+        phoneRequired: 'Phone number is required',
+        businessTypeRequired: 'Please select your business type',
+      },
     },
     footer: {
       tagline: 'Digital growth and automation for Thai small businesses.',
@@ -600,6 +658,7 @@ export const translations: Record<Locale, Translation> = {
           name: 'Starter',
           price: '3,500',
           description: 'เริ่มต้นทำตลาดออนไลน์',
+          whoThisIsFor: 'ธุรกิจใหม่ที่กำลังสร้างตัวตนออนไลน์',
           features: [
             'ปรับแต่ง Google Business Profile',
             'ดูแลโพสต์โซเชียล 4 ครั้ง/สัปดาห์',
@@ -611,6 +670,7 @@ export const translations: Record<Locale, Translation> = {
           name: 'Growth',
           price: '6,500',
           description: 'เหมาะกับธุรกิจที่กำลังโต',
+          whoThisIsFor: 'ธุรกิจที่พร้อมขยายตัว',
           features: [
             'ทุกอย่างใน Starter',
             'โพสต์โซเชียลทุกวัน',
@@ -625,6 +685,7 @@ export const translations: Record<Locale, Translation> = {
           name: 'Royal Boost',
           price: '12,000',
           description: 'ยกระดับดิจิทัลครบวงจร',
+          whoThisIsFor: 'ธุรกิจที่ต้องการความเป็นเลิศด้านดิจิทัลแบบครบวงจร',
           features: [
             'ทุกอย่างใน Growth',
             'อัปเดตและดูแลเว็บไซต์',
@@ -636,6 +697,14 @@ export const translations: Record<Locale, Translation> = {
           ],
         },
       ],
+    },
+    postPricingCta: {
+      eyebrow: 'ต้องการความช่วยเหลือในการตัดสินใจ?',
+      headline: 'ไม่แน่ใจว่าแพ็กเกจไหนเหมาะกับธุรกิจคุณ?',
+      supportingText: 'รับการตรวจสอบออนไลน์ฟรี ไม่มีข้อผูกมัด เราจะบอกคุณว่าคุณต้องการอะไร — และไม่ต้องการอะไร',
+      primaryCta: 'รับการตรวจสอบฟรี',
+      secondaryLink: 'หรือติดต่อเราโดยตรง',
+      trustReassurance: 'ไม่มีการบังคับขาย คำแนะนำที่ซื่อสัตย์',
     },
     testimonials: {
       title: 'เสียงจากลูกค้า',
@@ -667,7 +736,7 @@ export const translations: Record<Locale, Translation> = {
       steps: [
         {
           title: 'ปรึกษาฟรี',
-          description: 'คุยผ่าน LINE เพื่อเข้าใจธุรกิจและโจทย์ที่ต้องการ',
+          description: 'แค่คุยผ่าน LINE แบบสบายๆ ไม่กดดัน แค่เล่าให้เราฟังเรื่องธุรกิจของคุณ',
         },
         {
           title: 'เตรียมและสร้าง',
@@ -679,7 +748,7 @@ export const translations: Record<Locale, Translation> = {
         },
         {
           title: 'ดูแลรายเดือน',
-          description: 'อัปเดต ดูแล และซัพพอร์ตตามแพ็กเกจที่เลือก',
+          description: 'เราอยู่เคียงข้างคุณเสมอ อัปเดต ดูแล และซัพพอร์ตต่อเนื่อง—คุณไม่ต้องทำคนเดียว',
         },
       ],
     },
@@ -712,11 +781,15 @@ export const translations: Record<Locale, Translation> = {
           answer: 'เรามีทีมซัพพอร์ตตามแพ็กเกจ Starter ได้รับอีเมลซัพพอร์ต ส่วน Growth และ Royal Boost ได้คิวด่วน',
         },
       ],
+      ctaQuestion: 'ยังมีคำถามอยู่?',
+      ctaButton: 'รับการตรวจสอบฟรี',
+      trustLine: 'ไม่บีบ ไม่กดดัน คำแนะนำจริงใจสำหรับธุรกิจไทย',
     },
     contact: {
       title: 'พร้อมเริ่มหรือยัง?',
       subtitle: 'จองเวลาปรึกษาฟรีวันนี้',
       cardTitle: 'รับรายงานตรวจสุขภาพดิจิทัลฟรี',
+      cardSubtitle: 'บอกเราเกี่ยวกับธุรกิจของคุณ แล้วเราจะให้การประเมินที่เหมาะกับคุณ',
       nameLabel: 'ชื่อ',
       namePlaceholder: 'กรอกชื่อของคุณ',
       phoneLabel: 'เบอร์โทร',
@@ -731,8 +804,23 @@ export const translations: Record<Locale, Translation> = {
       ],
       challengeLabel: 'ปัญหาหลักที่อยากให้ช่วยคืออะไร?',
       challengePlaceholder: 'เล่าให้เราฟังเกี่ยวกับธุรกิจและสิ่งที่อยากให้ช่วย...',
-      submit: 'จองเวลาปรึกษาฟรี',
-      footnote: 'เราจะติดต่อกลับผ่าน LINE หรือโทรศัพท์ภายใน 24 ชั่วโมง',
+      preferredContactLabel: 'วิธีติดต่อที่ต้องการ',
+      preferredContactOptions: [
+        { value: '', label: 'ไม่ระบุ' },
+        { value: 'line', label: 'LINE' },
+        { value: 'phone', label: 'โทรศัพท์' },
+      ],
+      submit: 'รับการตรวจสอบฟรี',
+      submitLoading: 'กำลังส่ง...',
+      trustMicrocopy: 'ไม่บีบ ไม่สแปม รองรับทั้งภาษาไทยและอังกฤษ',
+      successTitle: 'ขอบคุณ!',
+      successMessage: 'เราได้รับคำขอตรวจสอบฟรีของคุณแล้ว เราจะติดต่อกลับภายใน 24 ชั่วโมง',
+      errorMessage: 'เกิดข้อผิดพลาด กรุณาลองอีกครั้งหรือติดต่อเราโดยตรง',
+      validationErrors: {
+        nameRequired: 'กรุณากรอกชื่อ',
+        phoneRequired: 'กรุณากรอกเบอร์โทรศัพท์',
+        businessTypeRequired: 'กรุณาเลือกประเภทธุรกิจ',
+      },
     },
     footer: {
       tagline: 'โซลูชันดิจิทัลและออโต้เมชันเพื่อธุรกิจไทยขนาดเล็ก',

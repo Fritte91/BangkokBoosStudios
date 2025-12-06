@@ -169,8 +169,8 @@
   right: 0;
   bottom: 0;
   background-image: 
-    repeating-linear-gradient(45deg, transparent, transparent 35px, rgba(212, 175, 55, 0.05) 35px, rgba(212, 175, 55, 0.05) 70px),
-    repeating-linear-gradient(-45deg, transparent, transparent 35px, rgba(212, 175, 55, 0.03) 35px, rgba(212, 175, 55, 0.03) 70px);
+    repeating-linear-gradient(45deg, transparent, transparent 35px, rgba(212, 175, 55, 0.047) 35px, rgba(212, 175, 55, 0.047) 70px),
+    repeating-linear-gradient(-45deg, transparent, transparent 35px, rgba(212, 175, 55, 0.028) 35px, rgba(212, 175, 55, 0.028) 70px);
   pointer-events: none;
 }
 
@@ -181,4 +181,17 @@
 .gold-glow:hover {
   box-shadow: 0 0 20px rgba(212, 175, 55, 0.4);
   transform: translateY(-2px);
+}
+
+@keyframes pulse-slow {
+  0%, 100% {
+    opacity: 0.15;
+  }
+  50% {
+    opacity: 0.25;
+  }
+}
+
+.animate-pulse-slow {
+  animation: pulse-slow 4s ease-in-out infinite;
 }
