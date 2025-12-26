@@ -110,7 +110,7 @@ export default function AboutSection() {
               
               {/* Team Portrait Image */}
               <img 
-                src="/portrait.png" 
+                src="/6.png" 
                 alt={t.about.teamPlaceholder}
                 className="w-full h-full object-cover"
                 style={{
