@@ -32,12 +32,14 @@ export default function Home() {
       {/* Navigation */}
       <nav className="fixed top-0 left-0 right-0 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 z-50 border-b border-border">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center h-16">
-            <div className="flex items-center gap-2">
-              <div className="w-8 h-8 bg-secondary rounded-full flex items-center justify-center">
-                <span className="font-serif text-sm font-bold text-secondary-foreground">B</span>
-              </div>
-              <span className="font-serif text-xl font-bold text-foreground hidden sm:inline">Bangkok Boost</span>
+          <div className="flex justify-between items-center h-20">
+            <div className="flex items-center gap-3">
+              <img 
+                src="/112.png" 
+                alt="Bangkok Boost Logo" 
+                className="h-16 md:h-20 w-auto object-contain"
+              />
+              <span className="font-serif text-xl md:text-2xl font-bold text-foreground hidden sm:inline">Bangkok Boost</span>
             </div>
 
             {/* Desktop Menu */}
@@ -111,7 +113,7 @@ export default function Home() {
       </nav>
 
       {/* Main Content */}
-      <main className="pt-16">
+      <main className="pt-20">
         <HeroSection />
         <AboutSection />
         <ServicesSection />

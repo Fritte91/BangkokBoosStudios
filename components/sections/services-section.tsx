@@ -5,7 +5,7 @@ import { MapPin, Smartphone, Zap, Globe } from 'lucide-react'
 import { useLanguage } from '@/components/language-provider'
 
 const serviceIcons = [MapPin, Smartphone, Zap, Globe]
-const workflowImages = ['/service1.png', '/service2.png', '/service3.png']
+const workflowImages = ['/7.png', '/8.png', '/9.png']
 
 export default function ServicesSection() {
   const { t } = useLanguage()
