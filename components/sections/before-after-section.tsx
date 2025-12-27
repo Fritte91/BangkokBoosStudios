@@ -4,6 +4,7 @@ import { Button } from '@/components/ui/button'
 import { ChevronLeft, ChevronRight } from 'lucide-react'
 import { useState } from 'react'
 import { useLanguage } from '@/components/language-provider'
+import Image from 'next/image'
 
 export default function BeforeAfterSection() {
   const [currentIndex, setCurrentIndex] = useState(0)
@@ -41,7 +42,13 @@ export default function BeforeAfterSection() {
               <p className="text-xs font-medium text-muted-foreground mb-2 uppercase tracking-wider">{t.beforeAfter.beforeLabel}</p>
               <h3 className="font-serif text-lg font-semibold text-foreground mb-3">{example.title}</h3>
               <p className="text-muted-foreground text-sm leading-relaxed">{example.before}</p>
-              <div className="mt-5 h-48 bg-background rounded border border-border/50 overflow-hidden">
+              <div className="mt-5 h-48 bg-background rounded border border-border/50 overflow-hidden relative">
+                <Image
+                  src={example.beforeImage}
+                  alt={`Before: ${example.title}`}
+                  fill
+                  className="object-cover"
+                />
               </div>
             </div>
 
@@ -50,7 +57,13 @@ export default function BeforeAfterSection() {
               <p className="text-xs font-semibold text-secondary mb-2 uppercase tracking-wider">{t.beforeAfter.afterLabel}</p>
               <h3 className="font-serif text-xl font-bold text-foreground mb-4">{example.title}</h3>
               <p className="text-secondary/90 font-medium text-sm leading-relaxed">{example.after}</p>
-              <div className="mt-6 h-48 bg-background rounded border border-secondary/30 overflow-hidden">
+              <div className="mt-6 h-48 bg-background rounded border border-secondary/30 overflow-hidden relative">
+                <Image
+                  src={example.afterImage}
+                  alt={`After: ${example.title}`}
+                  fill
+                  className="object-cover"
+                />
               </div>
               {example.projectUrl && (
                 <a

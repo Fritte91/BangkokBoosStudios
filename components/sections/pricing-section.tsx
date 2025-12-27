@@ -1,29 +1,65 @@
 'use client'
 
 import { Button } from '@/components/ui/button'
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Check } from 'lucide-react'
-import { useLanguage } from '@/components/language-provider'
+
+const plans = [
+  {
+    name: 'Presence Starter',
+    highlighted: false,
+    setupPrice: '15,000–25,000',
+    monthlyCare: '1,000–1,500',
+    features: [
+      '1–5 pages (WordPress)',
+      'Mobile-friendly + basic SEO',
+      'Contact + map + social links',
+      'Client handover training'
+    ]
+  },
+  {
+    name: 'Lead Gen Starter',
+    highlighted: true,
+    setupPrice: '18,000–25,000',
+    monthlyCare: '2,500–3,500',
+    features: [
+      'Conversion landing page (WP or React)',
+      'Lead form + auto-reply',
+      'Tracking (GA / basic events)',
+      'Hosting + updates included (monthly)'
+    ]
+  },
+  {
+    name: 'Growth System',
+    highlighted: false,
+    setupPrice: '25,000–35,000',
+    monthlyCare: '4,000–6,000',
+    features: [
+      'Premium landing + newsletter/blog option',
+      'Google Business Profile setup (or audit)',
+      'Analytics + reporting',
+      'Priority support + monthly improvements'
+    ]
+  }
+]
 
 export default function PricingSection() {
-  const { t } = useLanguage()
-
   return (
     <section id="pricing" className="py-20 bg-muted/30 thai-pattern">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="text-center mb-16 animate-fade-in-up">
           <h2 className="font-serif text-4xl md:text-5xl font-bold text-foreground mb-4">
-            {t.pricing.title}
+            Pricing
           </h2>
           <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
-            {t.pricing.subtitle}
+            Choose the package that fits your business needs
           </p>
         </div>
 
         {/* Pricing Cards */}
         <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
-          {t.pricing.plans.map((plan, index) => (
+          {plans.map((plan, index) => (
             <Card
               key={index}
               className={`transition-all duration-300 animate-fade-in-up bg-card/95 backdrop-blur-sm ${
@@ -36,34 +72,46 @@ export default function PricingSection() {
               <CardHeader>
                 {plan.highlighted && (
                   <div className="inline-block bg-secondary/20 text-secondary text-xs font-semibold px-3 py-1 rounded-full mb-2 w-fit">
-                    {t.pricing.mostPopularLabel}
+                    Most Popular
                   </div>
                 )}
                 <CardTitle className="font-serif text-2xl text-foreground">
                   {plan.name}
                 </CardTitle>
-                <CardDescription className="text-sm">{plan.description}</CardDescription>
-                <div className="mt-4">
-                  <span className="font-serif text-4xl font-bold text-foreground">
-                    ฿{plan.price}
-                  </span>
-                  <span className="text-muted-foreground ml-2">{t.pricing.perMonth}</span>
+                <div className="mt-4 space-y-2">
+                  <div>
+                    <span className="font-serif text-4xl font-bold text-foreground">
+                      ฿{plan.setupPrice}
+                    </span>
+                    <div className="text-xs text-muted-foreground/70 mt-1">
+                      Setup fee
+                    </div>
+                  </div>
+                  <div className="pt-2 border-t border-border/40">
+                    <div className="text-sm text-muted-foreground">
+                      <span className="font-medium">Monthly Care (optional):</span>
+                      <div className="text-foreground font-semibold mt-1">
+                        ฿{plan.monthlyCare} / month
+                      </div>
+                    </div>
+                  </div>
                 </div>
-                <p className="text-xs text-muted-foreground/70 mt-2 font-normal">
-                  {plan.whoThisIsFor}
-                </p>
               </CardHeader>
               <CardContent className="space-y-6">
                 <Button 
+                  asChild
                   className={`w-full h-10 font-semibold rounded-lg transition-all ${
                     plan.highlighted
                       ? 'bg-secondary hover:bg-secondary/90 text-secondary-foreground gold-glow'
                       : 'border border-secondary/20 bg-background hover:bg-secondary/5 text-foreground/70 hover:text-foreground'
                   }`}
                 >
-                  {t.pricing.choose(plan.name)}
+                  <a href="#contact">Book a free 15-min call</a>
                 </Button>
                 <div className="space-y-3 pt-1">
+                  <div className="text-xs text-muted-foreground/70 font-semibold uppercase tracking-wider mb-2">
+                    What's included
+                  </div>
                   {plan.features.map((feature, i) => {
                     // Emphasize first 1-2 features for each plan
                     const isKeyFeature = i < (plan.highlighted ? 2 : 1)

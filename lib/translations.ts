@@ -30,6 +30,8 @@ type BeforeAfterExample = {
   title: string
   before: string
   after: string
+  beforeImage: string
+  afterImage: string
   projectUrl?: string
 }
 
@@ -312,16 +314,22 @@ export const translations: Record<Locale, Translation> = {
           title: 'Google Business Profile',
           before: 'Basic info, few photos',
           after: 'Optimized, high-ranking, customer reviews',
+          beforeImage: '/c1.png',
+          afterImage: '/c2.png',
         },
         {
           title: 'Social Media Presence',
           before: 'Inconsistent posting',
           after: 'Daily automated posts, engagement boost',
+          beforeImage: '/b2.png',
+          afterImage: '/b1.png',
         },
         {
           title: 'Website Performance',
           before: 'Outdated content, low SEO',
           after: 'Fresh content, better rankings, more visitors',
+          beforeImage: '/a1.png',
+          afterImage: '/a2.png',
         },
       ],
     },
@@ -634,16 +642,22 @@ export const translations: Record<Locale, Translation> = {
           title: 'Google Business Profile',
           before: 'มีข้อมูลพื้นฐาน ภาพน้อย',
           after: 'ปรับเต็มรูปแบบ ติดอันดับ พร้อมรีวิวลูกค้า',
+          beforeImage: '/a1.png',
+          afterImage: '/a2.png',
         },
         {
           title: 'โซเชียลมีเดีย',
           before: 'โพสต์ไม่สม่ำเสมอ',
           after: 'โพสต์รายวันแบบอัตโนมัติ ยอดมีส่วนร่วมเพิ่ม',
+          beforeImage: '/b1.png',
+          afterImage: '/b2.png',
         },
         {
           title: 'เว็บไซต์',
           before: 'คอนเทนต์เก่า SEO ต่ำ',
           after: 'คอนเทนต์ใหม่ อันดับดี คนเข้าเพิ่ม',
+          beforeImage: '/c1.png',
+          afterImage: '/c2.png',
         },
       ],
     },
