@@ -48,9 +48,11 @@ export default function Footer() {
           {/* About */}
           <div className="space-y-5">
             <div className="flex items-center gap-2.5">
-              <div className="relative w-8 h-8 bg-secondary rounded-full flex items-center justify-center border border-background/10 shadow-[0_0_0_1px_rgba(255,255,255,0.05),0_1px_3px_rgba(0,0,0,0.2)] before:absolute before:inset-0 before:rounded-full before:border before:border-secondary/20 before:opacity-0 hover:before:opacity-100 before:transition-opacity before:duration-300">
-                <span className="font-serif text-sm font-bold text-foreground relative z-10">B</span>
-              </div>
+              <img 
+                src="/112.png" 
+                alt="Bangkok Boost Logo" 
+                className="h-8 w-8 object-contain"
+              />
               <span className="font-serif text-lg font-bold">Bangkok Boost</span>
             </div>
             <p className="text-sm opacity-80 leading-relaxed">
